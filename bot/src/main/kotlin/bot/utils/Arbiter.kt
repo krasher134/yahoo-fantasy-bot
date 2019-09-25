@@ -42,8 +42,7 @@ object Arbiter {
 
     private fun sendInitialMessage() {
         val startUpMessage =
-            "Hey there! I am the Yahoo Fantasy Bot that notifies you about all things happening in your league!" +
-                    "  Star me on Github: https://github.com/landonp1203/yahoo-fantasy-bot"
+            "It's Britney, bitch."
         if (!Postgres.startupMessageSent) {
             MessageBridge.dataObserver.onNext(Message.Generic(startUpMessage))
             Postgres.markStartupMessageReceived()
@@ -106,12 +105,12 @@ object Arbiter {
         JobRunner.createJob(MatchUpJob::class.java, "0 30 23 ? 9-1 THU *")
         JobRunner.createJob(StandingsJob::class.java, "0 30 16 ? 9-1 TUE *")
 
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 55 3 ? 9-1 FRI *")
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 17 ? 9-1 SUN *")
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 20 ? 9-1 SUN *")
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 0 ? 9-1 MON *")
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 55 3 ? 9-1 MON *")
-        JobRunner.createJob(ScoreUpdateJob::class.java, "0 55 3 ? 9-1 TUE *")
+        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 4 ? 9-1 FRI *")
+        // JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 17 ? 9-1 SUN *")
+        // JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 20 ? 9-1 SUN *")
+        // JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 0 ? 9-1 MON *")
+        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 4 ? 9-1 MON *")
+        JobRunner.createJob(ScoreUpdateJob::class.java, "0 00 4 ? 9-1 TUE *")
 
         JobRunner.runJobs()
     }
